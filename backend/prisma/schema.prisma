@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model annonce {
+  idannonce            Int                    @id(map: "pk_annonce") @default(autoincrement())
+  identreprise         Int?
+  poste                String?                @db.VarChar
+  descri               String?
+  debut                DateTime?              @db.Date
+  duree                Decimal?               @db.Decimal
+  idtype_emploi        Int?
+  idtype_lieu          Int?
+  lieu                 String?                @db.VarChar
+  salaire_min          Float?                 @db.Real
+  salaire_max          Float?                 @db.Real
+  date_annonce         DateTime?              @db.Date
+  entreprise           entreprise?            @relation(fields: [identreprise], references: [identreprise], onDelete: NoAction, onUpdate: NoAction, map: "fk_annonce_entreprise")
+  type_emploi          type_emploi?           @relation(fields: [idtype_emploi], references: [idtype_emploi], onDelete: NoAction, onUpdate: NoAction, map: "fk_annonce_type_emploi")
+  type_lieu            type_lieu?             @relation(fields: [idtype_lieu], references: [idtype_lieu], onDelete: NoAction, onUpdate: NoAction, map: "fk_annonce_type_lieu")
+  detail_annonce       detail_annonce[]
+  ignore               ignore[]
+  match                match[]
+  niveau_etude_annonce niveau_etude_annonce[]
+}
+
+model candidat {
+  idcandidat          Int                   @id(map: "pk_candidat") @default(autoincrement())
+  nom                 String?               @db.VarChar
+  email               String?               @db.VarChar
+  mdp                 String?               @db.VarChar
+  dtn                 DateTime?             @db.Date
+  numero              String?               @db.VarChar
+  idpays              Int?
+  ville               String?               @db.VarChar
+  competence_candidat competence_candidat[]
+  experience          experience[]
+  ignore              ignore[]
+  match               match[]
+  parcours            parcours[]
+  preference          preference[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model competence {
+  idcompetence        Int                   @id(map: "pk_competence") @default(autoincrement())
+  nom                 String?               @db.VarChar
+  type_competence     Int?
+  competence_candidat competence_candidat[]
+  detail_annonce      detail_annonce[]
+}
+
+model competence_candidat {
+  id           Int         @id(map: "pk_competence_candidat") @default(autoincrement())
+  idcandidat   Int?
+  idcompetence Int?
+  competence   competence? @relation(fields: [idcompetence], references: [idcompetence], onDelete: NoAction, onUpdate: NoAction, map: "fk_competence_candidat")
+  candidat     candidat?   @relation(fields: [idcandidat], references: [idcandidat], onDelete: NoAction, onUpdate: NoAction, map: "fk_competence_candidat_1")
+}
+
+model detail_annonce {
+  iddetail     Int         @id(map: "pk_detail_annonce") @default(autoincrement())
+  idannonce    Int?
+  idcompetence Int?
+  annonce      annonce?    @relation(fields: [idannonce], references: [idannonce], onDelete: NoAction, onUpdate: NoAction, map: "fk_detail_annonce_annonce")
+  competence   competence? @relation(fields: [idcompetence], references: [idcompetence], onDelete: NoAction, onUpdate: NoAction, map: "fk_detail_annonce_competence")
+}
+
+model entreprise {
+  identreprise Int       @id(map: "pk_entreprise") @default(autoincrement())
+  nom          String?   @db.VarChar
+  email        String?   @db.VarChar
+  mdp          String?   @db.VarChar
+  numero       String?   @db.VarChar
+  descri       String?
+  annonce      annonce[]
+}
+
+model experience {
+  idexperience  Int          @id(map: "pk_experience") @default(autoincrement())
+  idcandidat    Int?
+  entreprise    String?      @db.VarChar
+  poste         String?      @db.VarChar
+  idtype_emploi Int?
+  debut         DateTime?    @db.Date
+  fin           DateTime?    @db.Date
+  lieu          String?      @db.VarChar
+  idtype_lieu   Int?
+  candidat      candidat?    @relation(fields: [idcandidat], references: [idcandidat], onDelete: NoAction, onUpdate: NoAction, map: "fk_experience_candidat")
+  type_emploi   type_emploi? @relation(fields: [idtype_emploi], references: [idtype_emploi], onDelete: NoAction, onUpdate: NoAction, map: "fk_experience_type_emploi")
+  type_lieu     type_lieu?   @relation(fields: [idtype_lieu], references: [idtype_lieu], onDelete: NoAction, onUpdate: NoAction, map: "fk_experience_type_lieu")
+}
+
+model ignore {
+  idignore    Int       @id(map: "pk_ignor") @default(autoincrement())
+  idcandidat  Int?
+  idannonce   Int?
+  date_ignore DateTime? @db.Date
+  annonce     annonce?  @relation(fields: [idannonce], references: [idannonce], onDelete: NoAction, onUpdate: NoAction, map: "fk_ignor_annonce")
+  candidat    candidat? @relation(fields: [idcandidat], references: [idcandidat], onDelete: NoAction, onUpdate: NoAction, map: "fk_ignor_candidat")
+}
+
+model match {
+  idmatch    Int       @id(map: "pk_mat") @default(autoincrement())
+  idannonce  Int?
+  idcandidat Int?
+  date_match DateTime? @db.Date
+  annonce    annonce?  @relation(fields: [idannonce], references: [idannonce], onDelete: NoAction, onUpdate: NoAction, map: "fk_mat_annonce")
+  candidat   candidat? @relation(fields: [idcandidat], references: [idcandidat], onDelete: NoAction, onUpdate: NoAction, map: "fk_mat_candidat")
+}
+
+model niveau_etude {
+  idniveau_etude       Int                    @id(map: "pk_niveau_etude") @default(autoincrement())
+  nom                  String?                @db.VarChar
+  niveau               Int?
+  niveau_etude_annonce niveau_etude_annonce[]
+  parcours             parcours[]
+}
+
+model niveau_etude_annonce {
+  id             Int           @id(map: "pk_niveau_annonce") @default(autoincrement())
+  idannonce      Int?
+  idniveau_etude Int?
+  annonce        annonce?      @relation(fields: [idannonce], references: [idannonce], onDelete: NoAction, onUpdate: NoAction, map: "fk_niveau_annonce_annonce")
+  niveau_etude   niveau_etude? @relation(fields: [idniveau_etude], references: [idniveau_etude], onDelete: NoAction, onUpdate: NoAction, map: "fk_niveau_annonce_niveau_etude")
+}
+
+model parcours {
+  idparcours   Int           @id(map: "pk_parcours") @default(autoincrement())
+  ecole        String?       @db.VarChar
+  idniveau     Int?
+  domaine      String?       @db.VarChar
+  debut        DateTime?     @db.Date
+  fin          DateTime?     @db.Date
+  idcandidat   Int?
+  candidat     candidat?     @relation(fields: [idcandidat], references: [idcandidat], onDelete: NoAction, onUpdate: NoAction, map: "fk_parcours_candidat")
+  niveau_etude niveau_etude? @relation(fields: [idniveau], references: [idniveau_etude], onDelete: NoAction, onUpdate: NoAction, map: "fk_parcours_niveau_etude")
+}
+
+model preference {
+  idpreference  Int          @id(map: "pk_preference") @default(autoincrement())
+  idcandidat    Int?
+  idtype_emploi Int?
+  idtype_lieu   Int?
+  salaire_min   Float?       @db.Real
+  salaire_max   Float?       @db.Real
+  disponibilite Int?
+  candidat      candidat?    @relation(fields: [idcandidat], references: [idcandidat], onDelete: NoAction, onUpdate: NoAction, map: "fk_preference_candidat")
+  type_emploi   type_emploi? @relation(fields: [idtype_emploi], references: [idtype_emploi], onDelete: NoAction, onUpdate: NoAction, map: "fk_preference_type_emploi")
+  type_lieu     type_lieu?   @relation(fields: [idtype_lieu], references: [idtype_lieu], onDelete: NoAction, onUpdate: NoAction, map: "fk_preference_type_lieu")
+}
+
+model type_emploi {
+  idtype_emploi Int          @id(map: "pk_type_emploi") @default(autoincrement())
+  nom           String?      @db.VarChar
+  annonce       annonce[]
+  experience    experience[]
+  preference    preference[]
+}
+
+model type_lieu {
+  idtype_lieu Int          @id(map: "pk_type_lieu") @default(autoincrement())
+  nom         String?      @db.VarChar
+  annonce     annonce[]
+  experience  experience[]
+  preference  preference[]
+}
