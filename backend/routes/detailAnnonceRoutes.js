@@ -2,22 +2,18 @@ const express = require("express");
 const router = express.Router();
 const prisma = require("../prismaClient");
 
-// Récupérer tous
 router.get("/", async (req, res) => {
   try {
-    const items = await prisma.type_lieu.findMany();
+    const items = await prisma.detail_annonce.findMany();
     res.json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Lire un seul 
 router.get("/:id", async (req, res) => {
   try {
-    const item = await prisma.type_lieu.findUnique({
-      where: { idtype_lieu: parseInt(req.params.id) }
-    });
+    const item = await prisma.detail_annonce.findUnique({ where: { iddetail: parseInt(req.params.id) } });
     if (!item) return res.status(404).json({ message: "Non trouvé" });
     res.json(item);
   } catch (err) {
@@ -25,37 +21,27 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Créer
 router.post("/", async (req, res) => {
   try {
-    const item = await prisma.type_lieu.create({
-      data: req.body
-    });
+    const item = await prisma.detail_annonce.create({ data: req.body });
     res.status(201).json(item);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Mettre à jour
 router.put("/:id", async (req, res) => {
   try {
-    const item = await prisma.type_lieu.update({
-      where: { idtype_lieu: parseInt(req.params.id) },
-      data: req.body
-    });
+    const item = await prisma.detail_annonce.update({ where: { iddetail: parseInt(req.params.id) }, data: req.body });
     res.json(item);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// Supprimer
 router.delete("/:id", async (req, res) => {
   try {
-    await prisma.type_lieu.delete({
-      where: { idtype_lieu: parseInt(req.params.id) }
-    });
+    await prisma.detail_annonce.delete({ where: { iddetail: parseInt(req.params.id) } });
     res.json({ message: "Supprimé ✅" });
   } catch (err) {
     res.status(500).json({ message: err.message });
