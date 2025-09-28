@@ -1,18 +1,43 @@
-const express = require('express');
+const express = require("express");
 const session = require("express-session");
-const cors = require('cors');
+const typeLieuRoutes = require("./routes/typeLieuRoutes");
+const annonceRoutes = require("./routes/annonceRoutes");
+const candidatRoutes = require("./routes/candidatRoutes");
+const competenceRoutes = require("./routes/competenceRoutes");
+const competenceCandidatRoutes = require("./routes/competenceCandidatRoutes");
+const detailAnnonceRoutes = require("./routes/detailAnnonceRoutes");
+const entrepriseRoutes = require("./routes/entrepriseRoutes");
+const experienceRoutes = require("./routes/experienceRoutes");
+const ignoreRoutes = require("./routes/ignoreRoutes");
+const matchRoutes = require("./routes/matchRoutes");
+const niveauEtudeRoutes = require("./routes/niveauEtudeRoutes");
+const niveauEtudeAnnonceRoutes = require("./routes/niveauEtudeAnnonceRoutes");
+const parcoursRoutes = require("./routes/parcoursRoutes");
+const preferenceRoutes = require("./routes/preferenceRoutes");
+const typeEmploiRoutes = require("./routes/typeEmploiRoutes");
 const user_passport = require("./src/user_passeport");
 const enterprise_passport = require("./src/enterprise_passeport");
-require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Middleware
-app.use(cors());
 app.use(express.json());
 
-// Session
+// Routes
+app.use("/type-lieu", typeLieuRoutes);
+app.use("/annonce", annonceRoutes);
+app.use("/candidat", candidatRoutes);
+app.use("/competence", competenceRoutes);
+app.use("/competence-candidat", competenceCandidatRoutes);
+app.use("/detail-annonce", detailAnnonceRoutes);
+app.use("/entreprise", entrepriseRoutes);
+app.use("/experience", experienceRoutes);
+app.use("/ignore", ignoreRoutes);
+app.use("/match", matchRoutes);
+app.use("/niveau-etude", niveauEtudeRoutes);
+app.use("/niveau-etude-annonce", niveauEtudeAnnonceRoutes);
+app.use("/parcours", parcoursRoutes);
+app.use("/preference", preferenceRoutes);
+app.use("/type-emploi", typeEmploiRoutes);
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
@@ -29,18 +54,9 @@ app.use(user_passport.session());
 app.use(enterprise_passport.initialize());
 app.use(enterprise_passport.session());
 
-// Routes
-app.use('/type_lieux', require('./routes/type_lieuRoutes'));
 app.use('/auth', require('./routes/auth'));
 
-// Health check route
-app.get('/', (req, res) => {
-  res.json({ 
-    message: 'JobMatch Backend API is running',
-    version: '1.0.0',
-    authentication: 'JWT-based'
-  });
+// Lancer serveur
+app.listen(5000, () => {
+  console.log("🚀 Serveur démarré sur http://localhost:5000");
 });
-
-
-app.listen(PORT, () => console.log(`Serveur sur http://localhost:${PORT}`));
