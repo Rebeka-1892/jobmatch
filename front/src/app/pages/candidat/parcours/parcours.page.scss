@@ -1,0 +1,203 @@
+// Main page container
+.page-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  overflow: hidden;
+}
+
+// Page border decoration
+.page-border {
+  position: absolute;
+  border: 1px solid black;
+  inset: 0;
+  pointer-events: none;
+}
+
+// Progress bars
+.progress-bar-background {
+  position: absolute;
+  background: #d9d9d9;
+  height: 0.6vh; // ~4.703px on 852px height
+  left: 0;
+  top: 5.36vh; // ~45.68px on 852px height
+  width: 100%;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  background: #ea4080;
+  height: 0.47vh; // ~4px on 852px height
+  left: 0;
+  top: 5.36vh; // ~45.68px on 852px height
+  width: 24.94%; // ~98px on 393px width
+}
+
+// Back button
+.back-button {
+  position: absolute;
+  height: 2.13vh; // ~18.139px on 852px height
+  left: 6.33%; // ~24.86px on 393px width
+  top: 9.38vh; // ~79.94px on 852px height
+  width: 2.31%; // ~9.069px on 393px width
+  cursor: pointer;
+}
+
+.back-arrow-svg {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  inset: -14.81% -29.63% -14.81% -28.1%;
+}
+
+// Title
+.title {
+  position: absolute;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: normal;
+  left: 16.03%; // ~63px on 393px width
+  font-size: 7.63vw; // ~30px on 393px width
+  color: #010001;
+  top: 8.33vh; // ~71.01px on 852px height
+  width: 81.42%; // ~319.958px on 393px width
+  margin: 0;
+}
+
+// Add formation button
+.add-formation-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 6.33%; // ~24.86px on 393px width
+  padding: 1.89vh 21.2% 1.89vh 21.2%; // padding: 16.123px 83.303px
+  border-radius: 17.09vw; // ~67.179px on 393px width
+  top: 33.69vh; // ~287px on 852px height
+  width: 84.35%; // ~331.531px on 393px width
+  gap: 0.85vw; // ~3.359px on 393px width
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.button-border {
+  position: absolute;
+  border: 0.34vw solid #e94080; // ~1.344px on 393px width
+  inset: 0;
+  pointer-events: none;
+  border-radius: 17.09vw; // ~67.179px on 393px width
+}
+
+.button-text {
+  background: linear-gradient(90deg, #ea4080 0%, #36e0ef 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: normal;
+  position: relative;
+  flex-shrink: 0;
+  font-size: 3.76vw; // ~14.779px on 393px width
+  letter-spacing: 0.0376vw; // ~0.1478px on 393px width
+  width: 58.05%; // ~228.18px on 393px width
+  margin: 0;
+}
+
+// Icon container
+.icon-container {
+  position: absolute;
+  left: 9.76%; // ~38.36px on 393px width (relative to page, adjusted for button position)
+  width: 7.89vw; // ~31px on 393px width
+  height: 3.64vh; // ~31px on 852px height
+  top: 34.82vh; // ~296.73px on 852px height
+}
+
+.icon-svg {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  inset: -6.5% -16.25% -26% -16.25%;
+}
+
+// Description text
+.description-text {
+  position: absolute;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  line-height: 2vh; // ~17.06px on 852px height
+  left: 6.33%; // ~24.86px on 393px width
+  color: #828693;
+  font-size: 3.36vw; // ~13.193px on 393px width
+  top: 50.49vh; // ~345.01px on 852px height
+  width: 84.35%; // ~331.531px on 393px width
+  margin: 0;
+}
+
+// Continue button
+.continue-button {
+  position: absolute;
+  background: #ebecef;
+  height: 5.91vh; // ~50.385px on 852px height
+  left: 10.26%; // ~40.31px on 393px width
+  overflow: hidden;
+  border-radius: 17.09vw; // ~67.179px on 393px width
+  top: 76.53vh; // ~652px on 852px height
+  width: 79.49%; // ~312.385px on 393px width
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.continue-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  line-height: normal;
+  color: #828491;
+  font-size: 4.61vw; // ~18.138px on 393px width
+  white-space: nowrap;
+  margin: 0;
+}
+
+// Responsive adjustments for tablets and larger screens
+@media (min-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .button-text {
+    font-size: 14.779px;
+    letter-spacing: 0.1478px;
+  }
+
+  .description-text {
+    font-size: 13.193px;
+  }
+
+  .continue-text {
+    font-size: 18.138px;
+  }
+
+  .icon-container {
+    width: 31px;
+    height: 31px;
+  }
+
+  .button-border,
+  .add-formation-button,
+  .continue-button {
+    border-radius: 67.179px;
+  }
+
+  .button-border {
+    border: 1.344px solid #e94080;
+  }
+
+  .add-formation-button {
+    gap: 3.359px;
+  }
+}

@@ -1,0 +1,81 @@
+<ion-content [scrollY]="false">
+  <div class="page-container">
+    <!-- Border decoration -->
+    <div class="page-border"></div>
+
+    <!-- Progress bars -->
+    <div class="progress-bar-background"></div>
+    <div class="progress-bar-fill"></div>
+
+    <!-- Back button -->
+    <div class="back-button" (click)="onBack()">
+      <svg class="back-arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 15 24">
+        <path 
+          [attr.d]="svgPaths.backArrow" 
+          stroke="#828693" 
+          stroke-linecap="round" 
+          stroke-width="5.37436" />
+      </svg>
+    </div>
+
+    <!-- Title -->
+    <p class="title">Parcours académiques</p>
+
+    <!-- Add formation button -->
+    <div class="add-formation-button" (click)="onAddFormation()">
+      <!-- Icon container -->
+      <div class="icon-container">
+        <svg class="icon-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 43 43">
+          <defs>
+            <filter 
+              color-interpolation-filters="sRGB" 
+              filterUnits="userSpaceOnUse" 
+              height="41.0769" 
+              id="filter0_d" 
+              width="41.0769" 
+              x="0.961538" 
+              y="0.984615">
+              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feColorMatrix in="SourceAlpha" result="hardAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+              <feOffset dy="3.02308" />
+              <feGaussianBlur stdDeviation="2.51923" />
+              <feComposite in2="hardAlpha" operator="out" />
+              <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
+              <feBlend in2="BackgroundImageFix" mode="normal" result="effect1_dropShadow" />
+              <feBlend in="SourceGraphic" in2="effect1_dropShadow" mode="normal" result="shape" />
+            </filter>
+            <linearGradient gradientUnits="userSpaceOnUse" id="gradient" x1="6" x2="37" y1="18.5" y2="18.5">
+              <stop stop-color="#EA4080" />
+              <stop offset="1" stop-color="#36E0EF" />
+            </linearGradient>
+          </defs>
+          <g>
+            <g filter="url(#filter0_d)">
+              <circle cx="21.5" cy="18.5" fill="white" r="15.5" />
+              <circle cx="21.5" cy="18.5" fill="url(#gradient)" r="15.5" />
+            </g>
+            <path 
+              clip-rule="evenodd" 
+              [attr.d]="svgPaths.plusIcon" 
+              fill="white" 
+              fill-rule="evenodd" />
+          </g>
+        </svg>
+      </div>
+
+      <!-- Button border and text -->
+      <div class="button-border"></div>
+      <p class="button-text">Ajouter une formation</p>
+    </div>
+
+    <!-- Description text -->
+    <p class="description-text">
+      Ajoutez vos parcours académiques, diplômes et certifications afin de mettre en valeur vos compétences et votre spécialisation.
+    </p>
+
+    <!-- Continue button -->
+    <div class="continue-button" (click)="onContinue()">
+      <p class="continue-text">CONTINUE</p>
+    </div>
+  </div>
+</ion-content>

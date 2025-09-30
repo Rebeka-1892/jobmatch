@@ -1,0 +1,168 @@
+.user-type-page {
+  --background: white;
+
+  .container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    // border: 1px solid black; // Matching the original border
+  }
+
+  // Back Button Styling
+  .back-button {
+    position: absolute;
+    top: 55.42px;
+    left: 31.24px;
+    width: 9.069px;
+    height: 18.139px;
+    --color: #828693;
+    --padding-start: 0;
+    --padding-end: 0;
+    z-index: 10;
+
+    svg {
+      width: 15px;
+      height: 24px;
+    }
+  }
+
+  // Logo Section
+  .logo-section {
+    position: absolute;
+    top: 380px;
+    left: 89px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+  }
+
+  .app-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 33px;
+    color: #ea4080;
+    margin: 0;
+    line-height: normal;
+  }
+
+  // Selection Label
+  .selection-label {
+    position: absolute;
+    top: 487px;
+    left: 160px;
+  }
+
+  .label-text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #7da1c3;
+    margin: 0;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  // Selection Section
+  .selection-section {
+    position: absolute;
+    top: 528px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10.749px;
+    align-items: center;
+  }
+
+  .selection-button {
+    --background: transparent;
+    --color: #e94080;
+    --border-color: #e94080;
+    --border-width: 1.344px;
+    --border-radius: 67.179px;
+    --padding-start: 83.303px;
+    --padding-end: 83.303px;
+    --padding-top: 16.123px;
+    --padding-bottom: 16.123px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14.779px;
+    letter-spacing: 0.1478px;
+    text-transform: none;
+
+    &:first-child {
+      width: 331.531px;
+    }
+
+    &:last-child {
+      width: 332px;
+    }
+
+    // Gradient text effect
+    ion-label {
+      background: linear-gradient(to right, #ea4080, #e94080);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    &.selected {
+      --background: rgba(234, 64, 128, 0.1);
+      --border-color: #ea4080;
+      --color: #ea4080;
+    }
+
+    &:hover {
+      --background: rgba(234, 64, 128, 0.05);
+    }
+  }
+
+  // Continue Button
+  .continue-button {
+    position: absolute;
+    top: 660px;
+    left: 36px;
+
+    --background: linear-gradient(to right, #ea4080, #36e0ef);
+    --color: white;
+    --border-radius: 67.179px;
+    --padding-top: 14.11px;
+    --padding-bottom: 14.11px;
+    --box-shadow: 0px 3.023px 5.038px 0px rgba(0, 0, 0, 0.15);
+
+    width: 312.385px;
+    height: 50.385px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 18.138px;
+    text-transform: none;
+    letter-spacing: normal;
+
+    &:hover {
+      --background: linear-gradient(to right, #d63570, #2bc9d8);
+    }
+
+    &:active {
+      --background: linear-gradient(to right, #c22a60, #20b2c1);
+    }
+
+    &[disabled] {
+      --background: #bfc3cf;
+      --color: white;
+      --box-shadow: none;
+    }
+  }
+}

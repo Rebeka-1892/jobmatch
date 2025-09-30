@@ -1,0 +1,315 @@
+.personal-info-page {
+  --background: white;
+
+  .container {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    padding: 0;
+  }
+
+  // Progress Bar
+  .progress-bar {
+    position: absolute;
+    top: 5.5vh;
+    left: 0;
+    width: 100%;
+    height: 0.6vh;
+    background-color: #d9d9d9;
+  }
+
+  .progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 14.28%;
+    height: 100%;
+    background-color: #ea4080;
+  }
+
+  // Back Button
+  .back-button {
+    position: absolute;
+    top: 7.5vh;
+    left: 5.8%;
+    width: auto;
+    height: auto;
+    --color: #828693;
+    --padding-start: 0;
+    --padding-end: 0;
+    z-index: 10;
+  }
+
+  // Page Title
+  .page-title {
+    position: absolute;
+    top: 8.5vh;
+    left: 20%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 4vw, 1.875rem);
+    color: #010001;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  // Photo Upload Section
+  .photo-upload-section {
+    position: absolute;
+    top: 15.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(80px, 26%, 120px);
+    height: clamp(110px, 18vh, 160px);
+  }
+
+  .photo-container {
+    width: 100%;
+    height: 100%;
+    background-color: #e4e6ec;
+    border-radius: 0.5rem;
+    position: relative;
+    cursor: pointer;
+    border: 3px dashed #dcdfe6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.3rem;
+  }
+
+  .upload-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .add-button {
+    position: relative;
+    width: clamp(24px, 8%, 35px);
+    height: clamp(24px, 8%, 35px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // Form Section
+  .form-section {
+    position: absolute;
+    top: 35vh;
+    left: 20.5%;
+    right: 20.5%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group {
+    margin-bottom: clamp(2rem, 4.3vh, 3rem);
+    position: relative;
+  }
+
+  .field-label {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.75rem, 1.6vw, 0.825rem);
+    color: #828693;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .custom-input {
+    --background: transparent;
+    --color: #c6c5c7;
+    --placeholder-color: #c6c5c7;
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0.5rem;
+    --padding-bottom: 0.5rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
+    width: 100%;
+    border-bottom: 2px solid #828693;
+
+    &::part(native) {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #828693;
+    }
+
+    &.has-focus {
+      --color: #ea4080;
+      border-bottom-color: #ea4080;
+    }
+  }
+
+  // Date Input
+  .date-input-container {
+    position: relative;
+    width: 100%;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #828693;
+  }
+
+  .date-format {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
+    color: #c6c5c7;
+    letter-spacing: 0.125rem;
+  }
+
+  // Phone Container
+  .phone-container {
+    display: flex;
+    align-items: center;
+    gap: 5%;
+    width: 100%;
+  }
+
+  .country-code-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #828693;
+    min-width: 25%;
+    cursor: pointer;
+  }
+
+  .country-code {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
+    color: #444142;
+    letter-spacing: -0.024rem;
+  }
+
+  .dropdown-arrow {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+    color: #444142;
+    transform: rotate(180deg);
+  }
+
+  .phone-input {
+    --background: transparent;
+    --color: #444142;
+    --placeholder-color: #444142;
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0.5rem;
+    --padding-bottom: 0.5rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
+    letter-spacing: -0.024rem;
+    flex: 1;
+    border-bottom: 2px solid #828693;
+
+    &::part(native) {
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid #828693;
+    }
+  }
+
+  // Location Container
+  .location-container {
+    display: flex;
+    gap: 5%;
+    // margin-bottom: clamp(3rem, 6vh, 4rem);
+  }
+
+  .location-field {
+    flex: 1;
+  }
+
+  .location-input-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #828693;
+    cursor: pointer;
+    min-width: 25%;
+  }
+
+  .location-placeholder {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: clamp(1rem, 2.3vw, 1.2rem);
+    color: #c6c5c7;
+  }
+
+  // Continue Button
+  .continue-button {
+    --background: linear-gradient(to right, #ea4080, #36e0ef);
+    --color: white;
+    --border-radius: 4.2rem;
+    --padding-top: 0.875rem;
+    --padding-bottom: 0.875rem;
+    --box-shadow: 0px 0.19rem 0.31rem 0px rgba(0, 0, 0, 0.15);
+
+    width: min(80%, 19.5rem);
+    height: clamp(3rem, 6vh, 3.5rem);
+    margin: clamp(2rem, 4vh, 3rem) auto 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    text-transform: none;
+    letter-spacing: normal;
+
+    &:hover {
+      --background: linear-gradient(to right, #d63570, #2bc9d8);
+    }
+
+    &:active {
+      --background: linear-gradient(to right, #c22a60, #20b2c1);
+    }
+  }
+
+  // Responsive adjustments for smaller screens
+  @media (max-width: 768px) {
+    .form-section {
+      left: 12%;
+      right: 12%;
+      top: 32vh;
+    }
+
+    .page-title {
+      left: 12%;
+    }
+
+    .form-group {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .form-section {
+      left: 8%;
+      right: 8%;
+    }
+
+    .page-title {
+      left: 8%;
+    }
+
+    .continue-button {
+      width: 90%;
+    }
+  }
+}

@@ -1,0 +1,57 @@
+<ion-content [fullscreen]="true" class="user-type-page">
+  <div class="container">
+    <!-- Back Button -->
+    <ion-button 
+      fill="clear" 
+      class="back-button" 
+      (click)="goBack()">
+      <svg width="15" height="24" viewBox="0 0 15 24" fill="none">
+        <path d="M12.0692 3L3.23752 11.8317C3.10634 11.9629 3.10634 12.1756 3.23752 12.3067L12.0692 21.1385" 
+              stroke="#828693" 
+              stroke-width="5.37436" 
+              stroke-linecap="round"/>
+      </svg>
+    </ion-button>
+
+    <!-- Logo and Title Section -->
+    <div class="logo-section">
+      <div class="logo-container">
+        <img src="assets/images/logo.png" alt="JobMatch Logo" class="logo-image">
+        <h1 class="app-title">JobMatch</h1>
+      </div>
+    </div>
+
+    <!-- Selection Label -->
+    <div class="selection-label">
+      <p class="label-text">Je suis</p>
+    </div>
+
+    <!-- Selection Options -->
+    <div class="selection-section">
+      <ion-button 
+        fill="outline" 
+        class="selection-button"
+        [class.selected]="selectedType === 'entreprise'"
+        (click)="selectUserType('entreprise')">
+        UNE ENTREPRISE
+      </ion-button>
+      
+      <ion-button 
+        fill="outline" 
+        class="selection-button"
+        [class.selected]="selectedType === 'candidat'"
+        (click)="selectUserType('candidat')">
+        UN(E) CANDIDAT(E)
+      </ion-button>
+    </div>
+
+    <!-- Continue Button -->
+    <ion-button 
+      expand="block" 
+      class="continue-button"
+      [disabled]="!selectedType"
+      (click)="continue()">
+      CONTINUER
+    </ion-button>
+  </div>
+</ion-content>

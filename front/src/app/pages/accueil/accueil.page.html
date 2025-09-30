@@ -1,0 +1,31 @@
+<ion-content [fullscreen]="true" class="sign-in-page">
+  <div class="container">
+
+    <!-- Logo and Title Section -->
+    <div class="logo-section">
+      <div class="logo-container">
+        <img src="assets/images/logo_blanc.png" alt="JobMatch Logo" class="logo-image">
+        <h1 class="app-title">JobMatch</h1>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="description-section">
+      <p class="description-text">
+        Trouvez l'emploi ou le talent qui vous correspond, grâce au matching intelligent.
+      </p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="actions-section">
+      <ion-button expand="block" fill="outline" class="action-button signin-button" (click)="signIn()">
+        SE CONNECTER
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" class="action-button signup-button" (click)="signUp()">
+        S'INSCRIRE
+      </ion-button>
+    </div>
+    
+  </div>
+</ion-content>
